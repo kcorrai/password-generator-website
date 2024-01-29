@@ -5,7 +5,7 @@ letter = string.ascii_letters
 digits = string.digits
 punctuations = string.punctuation
 
-def generate_password(has_letter, has_digit, has_punc, pwd_length=10):
+def generate_password(has_letter, has_digit, has_punc, pwd_length=5):
     allpwd = []
     if has_letter:
         allpwd += letter
