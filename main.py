@@ -16,31 +16,37 @@ def password():
     
 @app.route('/password-generate/result', methods=['POST'])
 def result():
-    pwd_length = request.form['lenght']
-    if request.form['letter']:
-        has_letter = True
-    else:
-        has_letter = False
+    if request.method == 'POST':
+        pwd_length = request.form['lenght']
+        if request.form.get('letter'):
+            has_letter = True
+        else:
+            has_letter = False
+            
+        if request.form.get('digit'):
+            has_digit = True
+        else:
+            has_digit = False
+            
+        if request.form.get('punctuation'):
+            has_punc = True
+        else:
+            has_punc = False
         
-    if request.form['digit']:
-        has_digit = True
-    else:
-        has_digit = False
         
-    if request.form['punctuation']:
-        has_punc = True
-    else:
-        has_punc = False
-    
-    
-    with open("kullanici-verisi.txt", "w") as f:
-        f.write(pwd_length + ' | ')
-        f.write(str(has_letter) + ' | ')
-        f.write(str(has_digit) + ' | ')
-        f.write(str(has_punc )+ ' | ')
+        with open("kullanici-verisi.txt", "w") as f:
+            f.write(pwd_length + ' | ')
+            f.write(str(has_letter) + ' | ')
+            f.write(str(has_digit) + ' | ')
+            f.write(str(has_punc )+ ' | ')
 
-    return render_template('password-generator.html',
-                            result=generate_password(has_letter,has_digit,has_punc,int(pwd_length)))
+        return render_template('password-result.html',
+                                result=generate_password(has_letter,has_digit,has_punc, int(pwd_length)))
+        
+    else:
+        return render_template('password-result.html')
+    
+    
     
                            
 app.run(debug=True)

@@ -128,3 +128,11 @@ label {
   transform: scale(5);
   margin: 0 0 0 50px;
 }
+
+.pwd {
+  text-align: center;
+  background-color: aliceblue;
+  padding: 10px;
+  border-radius: 20px;
+  border: 5px solid rgb(68, 66, 66);
+}

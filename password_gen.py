@@ -18,5 +18,5 @@ def generate_password(has_letter, has_digit, has_punc, pwd_length=5):
     
     for _ in range(pwd_length):
         pwd += random.choice(allpwd)
-        return pwd
+    return pwd
         
