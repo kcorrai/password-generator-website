@@ -16,7 +16,7 @@ class Password(db.Model):
     letter = db.Column(db.Boolean)
     digit = db.Column(db.Boolean)
     punctuation = db.Column(db.Boolean)
-    
+        
     def __repr__(self):
         return f'<User {self.id}>'
         
@@ -50,14 +50,14 @@ def result():
             has_punc = True
         else:
             has_punc = False
-            
+        
         pwd = Password(length=pwd_length, letter=has_letter, digit=has_digit, punctuation=has_punc)
         db.session.add(pwd)
         db.session.commit()
         
 
         return render_template('password-result.html',
-                                result=generate_password(has_letter,has_digit,has_punc, int(pwd_length)))
+                               result=generate_password(has_letter,has_digit,has_punc, int(pwd_length)))
         
     else:
         return render_template('password-result.html')
