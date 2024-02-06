@@ -5,7 +5,7 @@ from flask_sqlalchemy import SQLAlchemy
 
 app = Flask(__name__)
 #sqlite'ı bağlama
-app.config['SQLALCHEMY_DATABASE_URI'] = 'sqlite://diary.db'
+app.config['SQLALCHEMY_DATABASE_URI'] = 'sqlite:///diary.db'
 app.config['SQLALCHEMY_TRACK_MODIFICATIONS'] = False
 #database oluşumu
 db = SQLAlchemy(app)
@@ -32,7 +32,7 @@ def password():
     
         
     
-@app.route('/password-generate/result', methods=['POST'])
+@app.route('/password-generate/result', methods=['GET','POST'])
 def result():
     if request.method == 'POST':
         pwd_length = request.form['lenght']
