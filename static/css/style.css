@@ -108,6 +108,7 @@ label {
   display: flex;
   flex-direction: column;
   gap: 30px;
+  list-style: none;
 }
 
 .form-list_item {
